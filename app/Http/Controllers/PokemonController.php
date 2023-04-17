@@ -34,6 +34,8 @@ class PokemonController extends Controller
     public function index()
     {
         //
+        $pokemons = Pokemon::all();
+        return view('pokemons', with(["pokemons" => $pokemons])); 
     }
 
     /**
