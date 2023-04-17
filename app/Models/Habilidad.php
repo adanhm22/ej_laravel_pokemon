@@ -10,6 +10,9 @@ class Habilidad extends Model
 {
     use HasFactory;
 
+    public $table = "habilidades";
+    protected $fillable = ['nombre'];
+
     public function pokemon()
     {
         return $this->BelongsTo(Pokemon::class,'pokemons');

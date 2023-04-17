@@ -4,8 +4,30 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pokemon;
+use WpOrg\Requests\Response;
+
 class PokemonController extends Controller
 {
+
+    public function addPokemon(Request $response, string $nombre)
+
+    {
+        # code...
+        $jsonPokemon = file_get_contents('https://pokeapi.co/api/v2/pokemon/' . $nombre);
+        $decoded_json_pokemon = json_decode($jsonPokemon, true);
+        $peso = $decoded_json_pokemon['weight'];
+        $altura = $decoded_json_pokemon['height'];
+
+        $retorno = Pokemon::create([
+            "nombre" => $nombre,
+            "peso" => $peso,
+            "altura" => $altura
+
+        ]);
+
+
+        return $retorno;
+    }
     /**
      * Display a listing of the resource.
      */
@@ -28,6 +50,21 @@ class PokemonController extends Controller
     public function store(Request $request)
     {
         //
+        $json = file_get_contents('https://pokeapi.co/api/v2/pokemon/?limit=10');
+        $decoded_json = json_decode($json, true);
+        $results = $decoded_json["results"];
+
+        $response = [];
+        
+        foreach ($results as $value) {
+            $nombre = $value["name"];
+            array_push($response,self::addPokemon($request,$nombre));
+        }
+
+        return response()->json([
+            "result"=> $response
+        ]);
+
     }
 
     /**
@@ -36,6 +73,11 @@ class PokemonController extends Controller
     public function show(string $id)
     {
         //
+        $pokemon = Pokemon::findOrFail($id);
+        
+        return response()->json([
+            "result"=> $pokemon
+        ]);
     }
 
     /**

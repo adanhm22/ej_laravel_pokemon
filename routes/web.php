@@ -18,7 +18,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('pokemon', [PokemonController::class, 'index']);
-Route::get('habilidad/{id}', [HabilidadController::class, 'show']);
-Route::post('newpokemon', [PokemonController::class, 'store']);
+//pokemones
+Route::get('pokemon/{id}', [PokemonController::class, 'show']);
+Route::get('pokemons', [PokemonController::class, 'index']);
+Route::post('newpokemons', [PokemonController::class, 'store']);
 Route::delete('borrarpokemon/{id}', [PokemonController::class, 'destroy']);
+
+//habilidades
+Route::get('habilidad/{id}', [HabilidadController::class, 'show']);
+Route::get('habilidades', [HabilidadController::class, 'index']);
+Route::post('newhabilidades', [HabilidadController::class, 'store']);
+Route::delete('borrarhabilidad/{id}', [HabilidadController::class, 'destroy']);

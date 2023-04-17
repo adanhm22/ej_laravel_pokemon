@@ -9,7 +9,9 @@ use App\Models\Habilidad;
 class Pokemon extends Model
 {
     use HasFactory;
+    public $table = "pokemons";
 
+    protected $fillable = ['nombre','altura','peso'];
     public function habilidades()
     {
         return $this->belongsToMany(Habilidad::class,'habilidades');
