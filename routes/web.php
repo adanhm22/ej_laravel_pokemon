@@ -27,5 +27,5 @@ Route::delete('borrarpokemon/{id}', [PokemonController::class, 'destroy']);
 //habilidades
 Route::get('habilidad/{id}', [HabilidadController::class, 'show']);
 Route::get('habilidades', [HabilidadController::class, 'index']);
-Route::post('newhabilidades', [HabilidadController::class, 'store']);
+Route::post('newhabilidades/{id}', [HabilidadController::class, 'store']);
 Route::delete('borrarhabilidad/{id}', [HabilidadController::class, 'destroy']);
