@@ -14,6 +14,6 @@ class Pokemon extends Model
     protected $fillable = ['nombre','altura','peso'];
     public function habilidades()
     {
-        return $this->belongsToMany(Habilidad::class,'habilidades');
+        return $this->hasMany(Habilidad::class,'fk_id_habilidades');
     }
 }

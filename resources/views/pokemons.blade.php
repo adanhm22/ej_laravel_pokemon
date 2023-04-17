@@ -17,9 +17,16 @@
     </head>
     <body class="antialiased">
        @foreach($pokemons as $pokemon)
-        {{$pokemon->nombre}}
-        {{$pokemon->peso}}
-        {{$pokemon->altura}}
+        <h1>{{$pokemon->nombre}}</h1>
+        {{$pokemon->peso}}<br>
+        {{$pokemon->altura}}<br>
+        <br>
+
+        <h2>Habilidades: </h2>
+        @foreach($pokemon->habilidades as $habilidad)
+        {{$habilidad->nombre}}<br>
+        @endforeach 
+                
         <br>
        @endforeach
 

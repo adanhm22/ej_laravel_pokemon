@@ -14,13 +14,15 @@ return new class extends Migration
         Schema::create('habilidades', function (Blueprint $table) {
             $table->id();
             $table->string('nombre',50);
-            $table->timestamps();
+            
             $table->unsignedBigInteger('fk_id_habilidades');
             $table->foreign('fk_id_habilidades')
                 ->references('id')
                 ->on('pokemons')
                 ->onDelte('cascade')
                 ->onUpdate('cascade');
+
+            $table->timestamps();
         });
     }
 

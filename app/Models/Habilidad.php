@@ -15,6 +15,6 @@ class Habilidad extends Model
 
     public function pokemon()
     {
-        return $this->BelongsTo(Pokemon::class,'pokemons');
+        return $this->BelongsTo(Pokemon::class);
     }
 }

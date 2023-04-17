@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pokemon;
-use WpOrg\Requests\Response;
 
 class PokemonController extends Controller
 {
